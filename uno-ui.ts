@@ -3,6 +3,7 @@ import type { UserShortcuts, Rule } from 'unocss';
 // @unocss-include
 const shortcuts: UserShortcuts<any> = {
 	'code': `font-mono ws-break-spaces rounded-[6px] py-[.2rem] px-[.4rem] bg-[#eff1f3]`,
+	// button
 	'btn': `cursor-pointer select-none decoration-none
 	rounded-2 h-12 min-h-12 px-4 
 	text-center text-sm font-600 font-button uppercase
@@ -12,6 +13,8 @@ const shortcuts: UserShortcuts<any> = {
 	'btn-success': 'text-successc bg-success hover:bg-success',
 	'btn-warning': 'text-warningc bg-warning hover:bg-warning',
 	'btn-danger': 'text-dangerc bg-danger hover:bg-danger',
+	//dropdown
+	'dropdown': 'relative inline-block'
 }
 
 const rules: Rule<any>[] = [
@@ -20,9 +23,10 @@ const rules: Rule<any>[] = [
 ]
 
 // config hmr works now
+// you have to set the configFile and ConfigDeps options in vite.config.ts UnoCSS
 // i had the configDeps pointing at src/ while i moved the preset to root
-// i was using the svelte-scoped plugin which doesen't have hmr implemented
-// by adding @unocss-include, i can get unocss intellisense here
+// i was using @unocss/svelte-scoped/vite which doesen't have hmr implemented
+// by adding // @unocss-include, i can get unocss intellisense here
 
 const theme = {
 	colors: {
