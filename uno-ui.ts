@@ -2,7 +2,7 @@ import type { UserShortcuts, Rule } from 'unocss';
 import { toEscapedSelector as e } from 'unocss';
 
 const btnBase = `
-	cursor-pointer select-none decoration-none outline-offset-3
+	cursor-pointer select-none decoration-none outline-offset-3 outline-neutral-6
 	rounded-2 h-12 min-h-12 px-4 
 	text-center text-sm font-600 font-button uppercase
 	border-none bg-base-2 hover:bg-base-3 transition-150 
@@ -16,21 +16,26 @@ const menuIcon = {
 // @unocss-include
 const shortcuts: UserShortcuts<any> = {
 	'code': `font-mono ws-break-spaces rounded-[6px] py-[.2rem] px-[.4rem] bg-[#eff1f3]`,
-	// button
+
 	'btn': `${btnBase} active:scale-[.97]`,
 	'btn-neutral': `text-white bg-neutral-9 hover:bg-neutral-9`,
-	'btn-ghost': 'bg-transparent hover:bg-base-2/70',
+	'btn-ghost': 'bg-transparent hover:bg-base-1',
 	'btn-lg': 'h-16 min-h-16 px-6 font-size-5',
 	'btn-sm': 'h-8 min-h-8 px-3 font-size-[.875rem]',
 	'btn-xs': 'h-6 min-h-6 px-2 font-size-3',
 	'btn-wide': 'w-64',
+
+	'input': `outline-base-content/25 font-size-4
+	rounded-2 h-12 min-h-12 px-4 outline-2 outline-offset-1
+ bg-base-1 border-1 border-base-content/25`,
+	'input-md': 'h-9 min-h-9 px-3 font-size-[.875rem]',
 
 	'nav': 'flex gap-x-2 rounded-md p-2',
 	'nav-link': `${btnBase} bg-transparent hover:bg-base-1 
 	active:hover:bg-base-2 active:focus:bg-base-2
 	outline-offset-0 outline-neutral-6`,
 
-	// base menu class is in shortcuts
+	// 'menu' is in rules
 	'menu-title': `nav-link h-full my-auto inline-flex items-center px-2`,
 	'menu-content': `list-none absolute z-1 my-0 mt-3 p-2
 	flex flex-col gap-y-2 rounded-2 min-w-23
@@ -40,7 +45,8 @@ const shortcuts: UserShortcuts<any> = {
 
 const utilColors = ['info', 'success', 'warning', 'danger']
 for (const col of utilColors) {
-	shortcuts[`btn-${col}`] = `text-${col}c bg-${col} hover:bg-${col} outline-${col}/58`;
+	shortcuts[`btn-${col}`] = `text-${col}c bg-${col} hover:bg-${col} outline-${col}/65`;
+	shortcuts[`input-${col}`] = `border-${col} outline-${col}/50 border-2 border-solid outline-offset-2 placeholder:text-${col}c/50`;
 }
 
 const rules: Rule<any>[] = [
@@ -100,11 +106,13 @@ const theme = {
 		'successc': 'rgb(0, 51, 32)',
 		'warningc': 'rgb(56, 40, 0)',
 		'dangerc': 'rgb(71, 0, 0)',
+
+		//  yoinked from daisy-ui but edited
 		base: {
 			content: 'hsl(0 3% 6%)',
-			1: 'hsl(0 4% 91%)',
-			2: 'hsl(0 4% 84%)',
-			3: 'hsl(0 4% 77%)'
+			1: 'hsl(0 4% 94%)', // l was 91%
+			2: 'hsl(0 4% 88%)', // l was 84%
+			3: 'hsl(0 4% 80%)' // l was 77%
 		},
 		// colors from custom coolors.co palette.
 		alpha: { /* cornsilk */

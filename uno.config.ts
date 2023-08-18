@@ -13,6 +13,10 @@ for (const color of ['alpha', 'bravo', 'charlie', 'delta', 'echo']) {
 		safelist.push(`bg-${color}-${i}`)
 	}
 }
+for (const color of ['info', 'success', 'warning', 'danger']) {
+	safelist.push(`btn-${color}`)
+	safelist.push(`input-${color}`)
+}
 
 export default defineConfig({
 	safelist,

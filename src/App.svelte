@@ -10,6 +10,8 @@
 		{ title: 'Product 2'}, 
 		{ title: 'Product 3'}
 	]
+
+	const utilVariants = ['info', 'success', 'warning', 'danger']
 </script>
 
 <main class="w-2xl mx-auto">
@@ -48,10 +50,10 @@
 		<button class="btn">default</button>
 		<button class="btn btn-neutral">neutral</button>
 		<button class="btn btn-ghost">ghost</button>
-		<button class="btn btn-info">info</button>
-		<button class="btn btn-success">success</button>
-		<button class="btn btn-warning">warning</button>
-		<button class="btn btn-danger">danger</button>
+		{#each utilVariants as util}
+			<button class="btn btn-{util}">{util}</button>
+		{/each}
+		
 	</div>
 	<h3>button sizes</h3>
 	<div class="flex gap-x-3 justify-center items-center">
@@ -62,6 +64,18 @@
 		<button class="btn btn-xs">tiny</button>
 	</div>
 
+	<h2>inputs</h2>
+	<div class="flex gap-x-3 justify-center">
+		<input type="text" name="textinput" class="input" placeholder="Type here"/>
+		<input type="text" name="textinput2" class="input input-md" placeholder="Type here"/>
+	</div>
+
+	<div class="flex gap-x-3 justify-center mt-4">
+		{#each utilVariants as util}
+			<input type="text" name="textinput" class="input input-{util}" placeholder="{util}"/>
+		{/each}
+	</div>
+
 	<h2>nav & dropdown</h2>
 	<div class="nav">
 		<button class="nav-link">Home</button>
@@ -70,6 +84,8 @@
 		<button class="nav-link">Services</button>
 		<button class="nav-link">About</button>
 	</div>
+
+
 	<div class="h-md"></div>
 </main>
 
