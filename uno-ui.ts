@@ -1,36 +1,93 @@
 import type { UserShortcuts, Rule } from 'unocss';
+import { toEscapedSelector as e } from 'unocss';
+
+const btnBase = `
+	cursor-pointer select-none decoration-none outline-offset-3
+	rounded-2 h-12 min-h-12 px-4 
+	text-center text-sm font-600 font-button uppercase
+	border-none bg-base-2 hover:bg-base-3 transition-150 
+`
+
+const menuIcon = {
+	closed:'i-lucide-chevron-down',
+	open: 'i-lucide-chevron-up'
+}
 
 // @unocss-include
 const shortcuts: UserShortcuts<any> = {
 	'code': `font-mono ws-break-spaces rounded-[6px] py-[.2rem] px-[.4rem] bg-[#eff1f3]`,
 	// button
-	'btn': `cursor-pointer select-none decoration-none outline-offset-3
-	rounded-2 h-12 min-h-12 px-4 
-	text-center text-sm font-600 font-button uppercase
-	border-none bg-base-2 hover:bg-base-3 transition-150 
-	hover:active:scale-[.96] focus:active:scale-[.96]`,
-	'btn-neutral': 'text-white bg-neutral-9 hover:bg-neutral-9',
-	//dropdown
-	'dropdown': 'relative inline-block'
+	'btn': `${btnBase} active:scale-[.97]`,
+	'btn-neutral': `text-white bg-neutral-9 hover:bg-neutral-9`,
+	'btn-ghost': 'bg-transparent hover:bg-base-2/70',
+	'btn-lg': 'h-16 min-h-16 px-6 font-size-5',
+	'btn-sm': 'h-8 min-h-8 px-3 font-size-[.875rem]',
+	'btn-xs': 'h-6 min-h-6 px-2 font-size-3',
+	'btn-wide': 'w-64',
+
+	'nav': 'flex gap-x-2 rounded-md p-2',
+	'nav-link': `${btnBase} bg-transparent hover:bg-base-1 
+	active:hover:bg-base-2 active:focus:bg-base-2
+	outline-offset-0 outline-neutral-6`,
+
+	// base menu class is in shortcuts
+	'menu-title': `nav-link h-full my-auto inline-flex items-center px-2`,
+	'menu-content': `list-none absolute z-1 my-0 mt-3 p-2
+	flex flex-col gap-y-2 rounded-2 min-w-23
+	bg-base-1`,
+	'menu-item': `nav-link rounded-1 btn-sm bg-white hover:bg-base-2 active:focus:bg-base-3 active:hover:bg-base-3 text-left leading-[2rem] normal-case text-inherit`,
 }
 
 const utilColors = ['info', 'success', 'warning', 'danger']
-
 for (const col of utilColors) {
-	shortcuts[`btn-${col}`] = `text-${col}c bg-${col} hover:bg-${col} outline-${col}`
+	shortcuts[`btn-${col}`] = `text-${col}c bg-${col} hover:bg-${col} outline-${col}/58`;
 }
 
 const rules: Rule<any>[] = [
 	['font-mono', { 'font-family': 'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace' }],
-	[/^outline-offset-(\d+)$/, ([, d]) => ({ 'outline-offset': `${d}px` })],,
+	[
+		/^outline-offset-(\d+)$/,
+		([, d]) => ({ 'outline-offset': `${d}px` }), 
+		{ autocomplete: 'outline-offset-<num>' }
+	],
 	['font-button', { 'font-family': 'ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,apple color emoji,segoe ui emoji,Segoe UI Symbol,noto color emoji' }], // stolen from daisyui
+
+	[/^menu$/, ([], { rawSelector }) => {
+		const sel = e(rawSelector);
+		return `
+			${sel} > summary::after {
+				--uno: "${menuIcon.closed} ml-1 relative";
+				content: "";
+				display: inline-block;
+				transition: mask 0.2s ease-in-out;
+			}
+			${sel}[open] > summary::after {
+				--uno: "${menuIcon.open}";
+			}`
+	}]
+	
+	// [/^blockquote$/, ([], { rawSelector }) => {
+	// 	const sel = e(rawSelector);
+	// 	return `
+	// 		${sel} {
+	// 			--uno: "bg-slate-200 border-l-solid border-l-4 border-slate-5 px-5 py-2 my-1 relative"
+	// 		}
+	// 		${sel}::before {
+	// 			--uno: "content-['>'] absolute left-1 font-bold text-lg leading-tight"
+	// 		}`
+	// }]
 ]
 
 // config hmr works now
-// you have to set the configFile and ConfigDeps options in vite.config.ts UnoCSS
+// - you have to set the configFile and ConfigDeps options in vite.config.ts UnoCSS
+// - by adding // @unocss-include, i can get unocss intellisense here
 // i had the configDeps pointing at src/ while i moved the preset to root
 // i was using @unocss/svelte-scoped/vite which doesen't have hmr implemented
-// by adding // @unocss-include, i can get unocss intellisense here
+
+// currently broken
+// shortcuts registered after extension loads work but don't have autocomplete
+// extension needs to be manually loaded with reload command
+// reloading extension more than once loads multiple instances
 
 const theme = {
 	colors: {

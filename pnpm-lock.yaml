@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@iconify-json/lucide':
+    specifier: ^1.1.119
+    version: 1.1.119
   '@sveltejs/vite-plugin-svelte':
     specifier: ^2.4.5
     version: 2.4.5(svelte@4.2.0)(vite@4.4.9)
@@ -257,6 +260,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@iconify-json/lucide@1.1.119:
+    resolution: {integrity: sha512-yWur/mdkiq1lKPAQHKhvlnc5XELR2bVl5lSTeSZizAEfooKlk1oTAksxcjvZ2LhMTkDT5BSXAoj+hwaxRZQc4g==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}

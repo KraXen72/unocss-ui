@@ -1,7 +1,7 @@
 // uno.config.ts
-import { defineConfig, presetUno, presetWebFonts, presetIcons, presetWind } from 'unocss'
+import { defineConfig, presetUno, presetWebFonts, presetIcons, presetWind, transformerDirectives } from 'unocss'
 import extractorSvelte from '@unocss/extractor-svelte';
-import presetUnoUI from './uno-ui';
+import { presetUnoUI } from './uno-ui';
 
 // import transformerCompileClass from '@unocss/transformer-compile-class';
 
@@ -37,5 +37,8 @@ export default defineConfig({
       },
 		}),
 		presetUnoUI()
+	],
+	transformers: [
+		transformerDirectives()
 	]
 })
