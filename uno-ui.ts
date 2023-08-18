@@ -4,21 +4,25 @@ import type { UserShortcuts, Rule } from 'unocss';
 const shortcuts: UserShortcuts<any> = {
 	'code': `font-mono ws-break-spaces rounded-[6px] py-[.2rem] px-[.4rem] bg-[#eff1f3]`,
 	// button
-	'btn': `cursor-pointer select-none decoration-none
+	'btn': `cursor-pointer select-none decoration-none outline-offset-3
 	rounded-2 h-12 min-h-12 px-4 
 	text-center text-sm font-600 font-button uppercase
-	border-none bg-base-2 hover:bg-base-3 transition-150
-	hover:active:scale-[.96]`,
-	'btn-info': 'text-infoc bg-info hover:bg-info',
-	'btn-success': 'text-successc bg-success hover:bg-success',
-	'btn-warning': 'text-warningc bg-warning hover:bg-warning',
-	'btn-danger': 'text-dangerc bg-danger hover:bg-danger',
+	border-none bg-base-2 hover:bg-base-3 transition-150 
+	hover:active:scale-[.96] focus:active:scale-[.96]`,
+	'btn-neutral': 'text-white bg-neutral-9 hover:bg-neutral-9',
 	//dropdown
 	'dropdown': 'relative inline-block'
 }
 
+const utilColors = ['info', 'success', 'warning', 'danger']
+
+for (const col of utilColors) {
+	shortcuts[`btn-${col}`] = `text-${col}c bg-${col} hover:bg-${col} outline-${col}`
+}
+
 const rules: Rule<any>[] = [
 	['font-mono', { 'font-family': 'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace' }],
+	[/^outline-offset-(\d+)$/, ([, d]) => ({ 'outline-offset': `${d}px` })],,
 	['font-button', { 'font-family': 'ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,apple color emoji,segoe ui emoji,Segoe UI Symbol,noto color emoji' }], // stolen from daisyui
 ]
 
