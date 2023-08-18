@@ -34,10 +34,11 @@ export default defineConfig({
 			warn: true
 		}),
 		presetWebFonts({
-			provider: 'google',
+			provider: 'bunny',
 			fonts: {
         sans: 'Roboto',
-				poppins: 'Poppins'
+				poppins: 'Poppins',
+				inter: 'Inter'
       },
 		}),
 		presetUnoUI()

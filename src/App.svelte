@@ -57,7 +57,6 @@
 	</div>
 	<h3>button sizes</h3>
 	<div class="flex gap-x-3 justify-center items-center">
-		<button class="btn btn-lg">large</button>
 		<button class="btn">normal</button>
 		<button class="btn btn-wide">wide</button>
 		<button class="btn btn-sm">small</button>
