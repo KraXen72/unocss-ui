@@ -29,6 +29,7 @@ const shortcuts: UserShortcuts<any> = {
 	rounded-2 h-12 min-h-12 px-4 outline-2 outline-offset-1
  bg-base-1 border-1 border-base-content/25`,
 	'input-md': 'h-9 min-h-9 px-3 font-size-[.875rem]',
+	'label': 'select-none py-2 px-1 flex justify-between',
 
 	'nav': 'flex gap-x-2 rounded-md p-2',
 	'nav-link': `${btnBase} bg-transparent hover:bg-base-1 
@@ -71,17 +72,6 @@ const rules: Rule<any>[] = [
 				--uno: "${menuIcon.open}";
 			}`
 	}]
-	
-	// [/^blockquote$/, ([], { rawSelector }) => {
-	// 	const sel = e(rawSelector);
-	// 	return `
-	// 		${sel} {
-	// 			--uno: "bg-slate-200 border-l-solid border-l-4 border-slate-5 px-5 py-2 my-1 relative"
-	// 		}
-	// 		${sel}::before {
-	// 			--uno: "content-['>'] absolute left-1 font-bold text-lg leading-tight"
-	// 		}`
-	// }]
 ]
 
 // config hmr works now

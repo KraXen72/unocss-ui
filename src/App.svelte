@@ -16,7 +16,7 @@
 
 <main class="w-2xl mx-auto">
 	<h1>unocss-ui</h1>
-	opinionated ui library with unocss
+	<span class="text-warning">[WIP]</span> opinionated ui library with unocss
 	<ul class="text-left w-max break-words whitespace-normal">
 		<li><b>Is it accessible?</b> Mostly. It tries to be, not the main concern. </li>
 		<li><b>Is it styled?</b> Yes. You can change the colors in <code class="code">uno.config.css</code></li>
@@ -67,12 +67,13 @@
 	<h2>inputs</h2>
 	<div class="flex gap-x-3 justify-center">
 		<input type="text" name="textinput" class="input" placeholder="Type here"/>
-		<input type="text" name="textinput2" class="input input-md" placeholder="Type here"/>
+		<input type="text" name="textinput2" 
+			class="input input-md" placeholder="Type here"/>
 	</div>
-
 	<div class="flex gap-x-3 justify-center mt-4">
 		{#each utilVariants as util}
-			<input type="text" name="textinput" class="input input-{util}" placeholder="{util}"/>
+			<input type="text" name="textinput" 
+				class="input input-{util}" placeholder="{util}"/>
 		{/each}
 	</div>
 
