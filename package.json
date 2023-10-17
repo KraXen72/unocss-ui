@@ -10,17 +10,17 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.1.119",
-    "@sveltejs/vite-plugin-svelte": "^2.4.5",
-    "@tsconfig/svelte": "^5.0.0",
-    "@unocss/extractor-svelte": "^0.55.1",
-    "@unocss/transformer-compile-class": "^0.55.1",
-    "@unocss/transformer-directives": "^0.55.1",
-    "svelte": "^4.2.0",
-    "svelte-check": "^3.5.0",
-    "tslib": "^2.6.1",
-    "typescript": "^5.1.6",
-    "unocss": "^0.55.1",
-    "vite": "^4.4.9"
+    "@iconify-json/lucide": "^1.1.134",
+    "@sveltejs/vite-plugin-svelte": "^2.4.6",
+    "@tsconfig/svelte": "^5.0.2",
+    "@unocss/extractor-svelte": "^0.56.5",
+    "@unocss/transformer-compile-class": "^0.56.5",
+    "@unocss/transformer-directives": "^0.56.5",
+    "svelte": "^4.2.1",
+    "svelte-check": "^3.5.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "unocss": "^0.56.5",
+    "vite": "^4.4.11"
   }
 }

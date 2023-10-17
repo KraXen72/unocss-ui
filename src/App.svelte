@@ -85,6 +85,7 @@
 		<button class="nav-link">About</button>
 	</div>
 
+	<!-- TODO add more component examples -->
 
 	<div class="h-md"></div>
 </main>
